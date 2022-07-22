@@ -3,51 +3,113 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>       
-
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+	<!-- fontawesome -->
+	<script src="https://kit.fontawesome.com/9a0994e5cb.js" crossorigin="anonymous"></script>
 	
+	<!-- google font -->
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
-	<title></title>
+	<title>회원관리</title>
 	
 	<style>
 		#wrap {
+			padding-left : 20px;
+			padding-right : 20px;
 			font-family: 'Noto Sans KR', sans-serif;
 		}
 		
-		#home {
+		#logo {
 			font-family: 'Noto Sans KR', sans-serif;
-			font-size: 50px;
+			text-decoration: none;
 		}
 		
-		.nav-item {
-			font-family: 'Noto Sans KR', sans-serif;
+		body {
+			background-color : #F3F7FA;
+		}
+		
+		aside {
+			padding-top : 50px;
+			padding-left : 20px;
+		}
+		
+		.main-nav{
 			font-size: 20px;
 		}
 		
-		section {
-			border-bottom: 4px solid #dee2e6;
-			padding: 20px;
+		.nav-link {
+			color: #4C637E;
+			padding: 5px;
+		}
+		
+		.nav-link:hover {
+			color: #4C637E;
+			font-weight: bold;
+		}
+				
+		.fa-circle-user {
+			font-size: 25px;
+			margin-right: 5px;
+		}
+		
+		.box {
+			background-color : white;
+			border : 1px solid #dee2e6;
+			box-shadow : 2px 2px 1px #E8EAEB;
+			width : 200px;
+			height : 150px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.noticeSection {
+			padding : 30px;
+			border-bottom: 1px solid #dee2e6;
+		}
+		
+		.searchSection {
+			background-color : white;
+			border : 1px solid #dee2e6;
+			box-shadow : 2px 2px 1px #E8EAEB;
+			padding : 20px;
+			margin: 20px;
+		}
+		
+		.memberList {
+			background-color : white;
+			border : 1px solid #dee2e6;
+			box-shadow : 2px 2px 1px #E8EAEB;
+			/* padding : 20px; */
+			margin: 20px;
 		}
 		
 		.text-input {
-			width : 200px;
+			width : 250px;
 			margin-right: 10px;
 			margin-top: 10px;
 		}
 		
+		.btn {
+			border-radius : 45px;
+			border : 0px;
+		}
+		
+		.btn:hover {
+			background-color: #F0F0F0;
+		}
+		
 		.searchBtn {
-			background-color: #dee2e6;
 			margin-right: 10px;
 			margin-top: 10px;
 		}
 		
 		.resetBtn {
-			background-color: #dee2e6;
 			margin-right: 10px;
 			margin-top: 10px;
 		}
@@ -57,142 +119,252 @@
 			height : 300px;
 		}
 		
+		thead {
+			background-color: #F5F5F5;
+		}
+		
 		tbody > tr:hover {
 			box-shadow: 1px 1px 20px #ddd;
+		}
+		
+		#ui-datepicker-div {
+			width : 250px;
+		}
+		
+		.page-link {
+			color : black;
+		}
+		
+		.page-link:hover {
+			color : black;
+		}
+		
+		.cancelBtn, .deleteBtn, .excelBtn, .createBtn {
+			/* padding-top : 1px; */
+			font-size: 15px;
+		}
+		
+		.cancelBtn:hover, .deleteBtn:hover {
+			background-color: #FF7070;
+		}
+		
+		.excelBtn:hover, .createBtn:hover {
+			background-color: #93ECAF;
 		}
 	
 	</style>
 </head>
-
 <body>
 	<div id="wrap">
-		<div class="container">
-			<nav class="navbar navbar-expand-lg border-bottom">
-				<div class="container-fluid">
-					<a class="navbar-brand" href="#"><h3 id="home">Title</h3></a>
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item">
-								<a class="nav-link" aria-current="page" href="#">코드그룹관리</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">코드관리</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">회원관리</a>
-							</li>
+		<div>
+			<header class="d-flex">
+				<a href="memberList.html" class="display-4 text-dark col-1" id="logo">Title</a>
+				<nav class="sub-menu col-11 d-flex align-items-center justify-content-end">
+					<ul class="nav">
+					    <!-- <li class="nav-item"><a href="#" class="nav-link small-link"><i class="fa-solid fa-circle-user"></i></a></li> -->
+					    <li class="nav-item"><a href="#" class="nav-link">로그인</a></li>
+					    <li class="nav-item"><a href="#" class="nav-link">회원가입</a></li>
+					</ul>                        
+				</nav>
+			</header>
+			<section class="d-flex">
+				<aside class="col-2">
+					<nav class="main-nav">
+						<ul class="nav flex-column">
+							<li class="nav-item"><a href="#" class="nav-link">코드그룹관리</a></li>				
+							<li class="nav-item"><a href="#" class="nav-link">코드관리</a></li>
+							<li class="nav-item"><a href="memberList.html" class="nav-link">회원관리</a></li>
 						</ul>
-						<div class="d-flex">
-							<a class="nav-link" href="#"><i class="fa-solid fa-user"></i></i></a>
-							<a href="#">로그인</a>
+					</nav>
+				</aside>
+				<section class="col-10">
+<!-- 				
+					<div class="noticeSection d-flex justify-content-around">
+						<div class="box">
+							<span>공지사항</span>
+						</div>
+						<div class="box">
+							<span>1:1문의</span>
+						</div>
+						<div class="box">
+							<span>1:1문의</span>
+						</div>
+						<div class="box">
+							<span>1:1문의</span>
 						</div>
 					</div>
-				</div>
-			</nav>
-			<div>
-				<img id="banner" src="https://velog.velcdn.com/images/pistachio02/post/d59a2403-9e54-4b56-86f9-8c67a7c2d051/%EA%B0%9C%EB%B0%9C%EC%9E%90.jpg">
-			</div>
-			<section>
-				<div class="d-flex">
-					<select class="form-select text-input">
-						<option>삭제여부</option>
-						<option>N</option>
-						<option>Y</option>
-					</select>
-					<select class="form-select text-input">
-						<option>성별</option>
-						<option>남성</option>
-						<option>여성</option>
-					</select>
-					<input type="text" class="form-control text-input" placeholder="시작일" id="startDate">
-					<input type="text" class="form-control text-input" placeholder="종료일" id="endDate">
-				</div>
-				<div class="d-flex ">
-					<select class="form-select text-input">
-						<option>검색구분</option>
-						<option>이름</option>
-						<option>제목</option>
-					</select>
-					<input type="text" class="form-control text-input" placeholder="검색어">
-					<button type="button" class="btn searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
-					<button type="button" class="btn resetBtn"><i class="fa-solid fa-rotate-right"></i></button>
-				</div>
-			</section>
-			<section>
-				<table class="table">
-					<thead>
-						<tr>
-							<th scope="col">No</th>
-							<th scope="col">이름</th>
-							<th scope="col">성별</th>
-							<th scope="col">생년월일</th>
-							<th scope="col">이메일</th>
-							<th scope="col">전화번호</th>
-							<th scope="col">가입날짜</th>
-							<th scope="col">마지막 접속 날짜</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>Mark</td>
-							<td>남</td>
-							<td>001010</td>
-							<td>asdf@naver.com</td>
-							<td>010-1234-5678</td>
-							<td>2022-05-01</td>
-							<td>2022-07-15</td>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>Mark</td>
-							<td>남</td>
-							<td>001010</td>
-							<td>asdf@naver.com</td>
-							<td>010-1234-5678</td>
-							<td>2022-05-01</td>
-							<td>2022-07-15</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td>Mark</td>
-							<td>남</td>
-							<td>001010</td>
-							<td>asdf@naver.com</td>
-							<td>010-1234-5678</td>
-							<td>2022-05-01</td>
-							<td>2022-07-15</td>
-						</tr>
-					</tbody>
-				</table>
+ -->				
+ 					<span class="m-4"><b>회원관리</b></span>
+					<div class="searchSection">
+						<div class="d-flex">
+							<select class="form-select text-input">
+								<option>삭제여부</option>
+								<option>N</option>
+								<option>Y</option>
+							</select>
+							<select class="form-select text-input">
+								<option>날짜구분</option>
+								<option>가입일</option>
+								<option>마지막접속일</option>
+							</select>
+							<input type="text" class="form-control text-input" placeholder="시작일" id="startDate">
+							<input type="text" class="form-control text-input" placeholder="종료일" id="endDate">
+						</div>
+						<div class="d-flex">
+							<select class="form-select text-input">
+								<option>검색구분</option>
+								<option>이름</option>
+								<option>제목</option>
+							</select>
+							<input type="text" class="form-control text-input" placeholder="검색어">
+							<button type="button" class="btn searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+							<button type="button" class="btn resetBtn"><i class="fa-solid fa-rotate-right"></i></button>
+						</div>
+					</div>
+					<div class="memberList">
+						<div class="d-flex p-2 justify-content-between">
+							<div class="mt-2">
+								<span class="p-2">검색 결과 회원수 : N</span>
+								<span class="p-2">총 회원수 : N</span>
+							</div>
+							<div>
+								<button type="button" class="btn excelBtn"><i class="fa-solid fa-file-excel"></i></button>
+								<a href="create.html" class="btn createBtn"><i class="fa-solid fa-circle-plus"></i></a>
+							</div>
+						</div>
+						<table class="table text-center">
+							<thead>
+								<tr>
+									<th scope="col"><input type="checkbox" id="chkAll"></th>
+									<th scope="col">No</th>
+									<th scope="col">이름</th>
+									<th scope="col">성별</th>
+									<th scope="col">생년월일</th>
+									<th scope="col">이메일</th>
+									<th scope="col">전화번호</th>
+									<th scope="col">가입날짜</th>
+									<th scope="col">마지막 접속 날짜</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="col"><input type="checkbox" class="chk"></th>
+									<th scope="row">1</th>
+									<td>Mark</td>
+									<td>남</td>
+									<td>001010</td>
+									<td>asdf@naver.com</td>
+									<td>010-1234-5678</td>
+									<td>2022-05-01</td>
+									<td>2022-07-15</td>
+								</tr>
+								<tr>
+									<th scope="col"><input type="checkbox" class="chk"></th>
+									<th scope="row">2</th>
+									<td>Mark</td>
+									<td>남</td>
+									<td>001010</td>
+									<td>asdf@naver.com</td>
+									<td>010-1234-5678</td>
+									<td>2022-05-01</td>
+									<td>2022-07-15</td>
+								</tr>
+								<tr>
+									<th scope="col"><input type="checkbox" class="chk"></th>
+									<th scope="row">3</th>
+									<td>Mark</td>
+									<td>남</td>
+									<td>001010</td>
+									<td>asdf@naver.com</td>
+									<td>010-1234-5678</td>
+									<td>2022-05-01</td>
+									<td>2022-07-15</td>
+								</tr>
+							</tbody>
+						</table>
+						<nav aria-label="Page navigation example" class="d-flex justify-content-center">
+							<ul class="pagination">
+								<li class="page-item">
+									<a class="page-link" href="#" aria-label="Previous">
+										<span aria-hidden="true" class="text-dark">&laquo;</span>
+										<span class="sr-only">Previous</span>
+									</a>
+								</li>
+								<li class="page-item"><a class="page-link" href="#">1</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item">	
+									<a class="page-link" href="#" aria-label="Next">
+										<span aria-hidden="true" class="text-dark">&raquo;</span>
+										<span class="sr-only">Next</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+						<div class="d-flex justify-content-end">				
+							<div>
+								<button type="button" class="btn cancelBtn"><i class="fa-solid fa-xmark"></i></button>
+								<button type="button" class="btn deleteBtn" data-bs-toggle="modal" data-bs-target="#memberDeleteModal"><i class="fa-solid fa-trash-can"></i></a>
+							</div>
+						</div>
+					</div>
+				</section>
 			</section>
 		</div>
 	</div>
-	<!-- js -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-	<!-- fontawesome -->
-	<script src="https://kit.fontawesome.com/9a0994e5cb.js" crossorigin="anonymous"></script>
+	
+	
+	<!-- modal -->
+	<div class="modal fade" id="memberDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content" role="document">
+				<div class="modal-header">
+					<h5 class="modal-title">회원삭제</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>삭제하시겠습니까?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn" data-bs-dismiss="modal">취소</button>
+					<button type="button" class="btn deleteBtn">삭제하기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+	
 	
 	<script>
 		$(document).ready(function(){
-			$( "#startDate" ).datepicker({
-				minDate:0, 
+			$("#startDate").datepicker({
                 showButtonPanel: true, 
                 currentText: '오늘',
                 dateFormat: "yy-mm-dd",
-                dayNamesMin:['월', '화', '수', '목', '금', '토', '일'],
+                dayNamesMin:['월', '화', '수', '목', '금', '토', '일']
 			});
 			
-			$( "#endDate" ).datepicker({
-				minDate:0, 
+			$("#endDate").datepicker({
                 showButtonPanel: true, 
                 dateFormat: "yy-mm-dd",
-                dayNamesMin:['월', '화', '수', '목', '금', '토', '일'],
+                dayNamesMin:['월', '화', '수', '목', '금', '토', '일']
 			});
+			
+			$("#chkAll").on("click", function(){
+				if ($(this).is(":checked")) {
+					$(".chk").prop("checked", true);
+				} else {
+					$(".chk").prop("checked", false);
+				}
+				console.log($(this).prop("checked"))
+			});
+			
+			$("#createBtn").on("click", function(){
+				location.href = 'create.html'
+			});
+			
 		});
 	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>
