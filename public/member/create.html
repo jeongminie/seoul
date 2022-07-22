@@ -81,9 +81,19 @@
 			margin: 20px;
 		}
 		
-		#createBtn:hover {
+		.createBtn, .cancelBtn {
+			border : none;
+		}
+		
+		.createBtn:hover {
+			border : none;
 			background-color: #93ECAF;
-		}		
+		}	
+		
+		.cancelBtn:hover {
+			border : none;
+			background-color: #FF7070;
+		}	
 
 	
 	</style>
@@ -111,7 +121,7 @@
 						</ul>
 					</nav>
 				</aside>
-				<section class="col-10">
+				<section class="col-10 p-4">
 					<div class="frontSection">
 						<span><b>STEP1.정보입력</b></span>
 						<span>STEP2.등록완료</span>
@@ -139,9 +149,10 @@
 						<input type="text" class="form-control text-input" placeholder="비밀번호 확인">
 						<input type="text" class="form-control text-input" placeholder="이메일">
 					</div>
-				</section>
-				<section>
-					<!-- <button type="button" id="createBtn" class="btn">등록</button> -->
+					<div class="d-flex justify-content-between">
+						<button type="button" class="btn cancelBtn" onClick="location.href='memberList.html'">이전</button>
+						<button type="button" class="btn createBtn">등록하기</button>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -155,6 +166,11 @@
                 , currentText: '오늘'
                 , dateFormat: "yy-mm-dd"
                 , dayNamesMin:['월', '화', '수', '목', '금', '토', '일']
+			});
+			
+			$(".createBtn").on("click", function(){
+				alert("등록하시겠습니까?");
+				location.href="memberList.html	"
 			});
 		});
 	</script>
